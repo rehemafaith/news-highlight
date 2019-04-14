@@ -8,6 +8,14 @@ def index():
     '''
     View root page function that returns the index page and its date 
     '''
-    return render_template('index.html')
-
     
+    title  ='News Highlight!'
+    return render_template('index.html', title = title )
+
+@app.route('/news/<int:news_id>')
+def newa(news_id):
+
+  '''
+  View news page function that returns the news details page and its data
+  '''
+  return render_template('news.html',id = news_id)
