@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for headline in news %}
-<p>{{headline.content}} </p>
-{% endfor%}
+ <div class=container>
+   <div class=jumbotron>
+    <h1>Top Headlines</h1>
+   </div>
+   <div class="card">
+  {% for headline in news %}
+  <h2>{{headline.title}}</h2>
+  <img src="{{headline.urlToImage}}" alt="image">
+ 
+  <p>{{headline.content }} </p>
+  {% endfor%}
+  </div>
+ </div>
+
+
 
 {% endblock %}

@@ -94,8 +94,10 @@ def process_headlines(headlines_list):
         urlToImage = headlines_item.get ('urlToImage')
         content = headlines_item.get ('content')
 
-        headlines_object = Headlines(id,author,title,description,urlToImage,content)
-        headlines_results.append(headlines_object)
+        if urlToImage:
+
+            headlines_object = Headlines(id,author,title,description,urlToImage,content)
+            headlines_results.append(headlines_object)
 
     return headlines_results
 

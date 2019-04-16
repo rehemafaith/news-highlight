@@ -12,4 +12,4 @@ app.config.from_pyfile('config.py')
 #Initializing Flask Extentions
 bootstrap = Bootstrap(app)
 
-from app import views 
+from app import views  

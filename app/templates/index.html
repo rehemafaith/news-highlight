@@ -3,10 +3,18 @@
 
  <!-- News sources  section  -->
 {% block content %}
-  <h3> News Sources</h3>
-  {% for source in sources %}
-  <p>
-    <a href="/news/{{ source.id }}">{{ source.name}}</a>
-  </p> 
-  {% endfor %}     
+<div class=jumbotron>
+    <h3> News Sources</h3>
+</div>
+ <div class="container" style="width:100%">
+    {% for source in sources %}
+    <div class="card" >
+      <p>
+        <a href="/news/{{ source.id }}" style="color:black">{{ source.name}}</a>
+      </p>
+    </div>
+    
+    {% endfor %} 
+ </div>
+       
 {% endblock %}
