@@ -71,7 +71,7 @@ def get_headlines(sources):
         if get_headlines_response['articles']:
             headlines_results_list = get_headlines_response['articles']
             headlines_results = process_headlines(headlines_results_list)
-
+ 
     return headlines_results
 
 def process_headlines(headlines_list):
