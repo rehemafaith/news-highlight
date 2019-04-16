@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <div class=container>
-   <div class=jumbotron>
+<div class=container-fluid>
+  <div class=jumbotron>
     <h1>Top Headlines</h1>
-   </div>
-   <div class="card">
-  {% for headline in news %}
-  <h2>{{headline.title}}</h2>
-  <img src="{{headline.urlToImage}}" alt="image">
- 
-  <p>{{headline.content }} </p>
-  {% endfor%}
   </div>
- </div>
 
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="movie-card">
+        {% for headline in news %}
+        <h2>{{headline.title}}</h2>
+        <img src="{{headline.urlToImage}}" alt="image" width="100%">
+        <p>{{headline.description}}</p>
+        <button><a href="{{headline.url}}">Read More</a></button>
+        {% endfor%}
+      </div>
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}
