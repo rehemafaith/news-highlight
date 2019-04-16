@@ -14,7 +14,7 @@
         <h2>{{headline.title}}</h2>
         <img src="{{headline.urlToImage}}" alt="image" width="100%">
         <p>{{headline.description}}</p>
-        <button class="button"><span><a href="{{headline.url}}">Read More</a></span></button>
+        <a href="{{headline.url}}"><button class="button"><span>Read More</span></button></a>
         {% endfor%}
       </div>
     </div>
@@ -23,12 +23,12 @@
 <style>
 .button {
   border-radius: 4px;
-  background-color: #f4511e;
+  background-color: #59000E;
   border: none;
-  color: #FFFFFF;
+  color: white;
   text-align: center;
-  font-size: 28px;
-  padding: 20px;
+  font-size: 22px;
+  padding: 12px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
@@ -47,7 +47,7 @@
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -0px;
   transition: 0.5s;
 }
 
@@ -59,9 +59,7 @@
   opacity: 1;
   right: 0;
 }
-a{
-  color:white;
-}
+
 </style>
 
 {% endblock %}
