@@ -1,8 +1,9 @@
 from app import app 
 import urllib.request,json
-from .models import newsource
+from .models import newsource,headlines
 
 Newsource = newsource.Newsource
+Headlines = headlines.Headlines
 
 #Getting the api key 
 api_key = app.config['NEWS_API_KEY']
@@ -54,11 +55,11 @@ def process_results(news_list):
 
     return news_results
 
-def get_headlines(sources_id):
+def get_headlines(sources):
     '''
     Function that gets the json to our url request
     '''
-    get_headlines_url = headlines_url.format(sources_id,api_key)
+    get_headlines_url = headlines_url.format(sources,api_key)
 
     with urllib.request.urlopen(get_headlines_url) as url:
         get_headlines_data = url.read()
@@ -87,13 +88,14 @@ def process_headlines(headlines_list):
     headlines_results = []
     for headlines_item in headlines_list:
         id = headlines_item.get('id')
-        name = headlines_item.get('name')
-        description = headlines_item.get ('description')
-        url = headlines_item.get('url')
+        author = headlines_item.get('author')
+        title = headlines_item.get ('title')
+        description = headlines_item.get('description')
+        urlToImage = headlines_item.get ('urlToImage')
+        content = headlines_item.get ('content')
 
-        if url:
-            headlines_object = Newsource(id,name,description,url)
-            headlines_results.append(headlines_object)
+        headlines_object = Headlines(id,author,title,description,urlToImage,content)
+        headlines_results.append(headlines_object)
 
     return headlines_results
 

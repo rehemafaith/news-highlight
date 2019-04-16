@@ -17,7 +17,7 @@ def index():
     title = 'Home - Welcome to News Highlight'
     return render_template('index.html',title = title , sources = sources)
 
-@app.route('/news/<sources_id>')
+@app.route('/news/<sources>')
 def news(sources):
 
   '''
