@@ -16,6 +16,7 @@ def get_news():
     '''
     Function that gets the json to our url request
     '''
+
     get_news_url = base_url.format(api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
@@ -49,7 +50,7 @@ def process_results(news_list):
         description = news_item.get ('description')
         url = news_item.get('url')
 
-        
+    
         news_object = Newsource(id,name,description,url)
         news_results.append(news_object)
 
