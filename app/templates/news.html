@@ -13,7 +13,7 @@
         {% for headline in news %} 
         <h2>{{headline.title}}</h2>
         <img src="{{headline.urlToImage}}" alt="image" width="100%">
-        <p>{{headline.description}}</p>
+        <p>{{headline.description}}</p> 
         <a href="{{headline.url}}"><button class="button"><span>Read More</span></button></a>
         {% endfor%}
       </div>
