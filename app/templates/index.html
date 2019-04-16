@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% import 'macros.html' as macro%}
 
 
  <!-- News sources  section  -->
-   {% block content %}
-    
-      <h3> News Sources</h3>
-      <ul>
-          {{ macro.displayNewsList(sources)}}
-      </ul>
-   {% endblock %}
+{% block content %}
+  <h3> News Sources</h3>
+  {% for source in sources %}
+  <p>
+    <a href="/news/{{ source.id }}">{{ source.name}}</a>
+  </p> 
+  {% endfor %}     
+{% endblock %}

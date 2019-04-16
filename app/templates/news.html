@@ -1,3 +1,8 @@
-<h2>
-  Hello World 
-</h2>
+{% extends 'base.html' %}
+
+{% block content %}
+{% for headline in news %}
+<p>{{headline.author}} </p>
+{% endfor%}
+
+{% endblock %}

@@ -9,9 +9,9 @@ api_key = app.config['NEWS_API_KEY']
 
 # Getting the news base url 
 base_url = app.config['NEWS_API_BASE_URL']
+headlines_url = app.config['HEADLINES_API_BASE_URL']
 
-
-def get_news(sources):
+def get_news():
     '''
     Function that gets the json to our url request
     '''
@@ -48,11 +48,55 @@ def process_results(news_list):
         description = news_item.get ('description')
         url = news_item.get('url')
 
-        if url:
-            news_object = Newsource(id,name,description,url)
-            news_results.append(news_object)
+        
+        news_object = Newsource(id,name,description,url)
+        news_results.append(news_object)
 
     return news_results
+
+def get_headlines(sources_id):
+    '''
+    Function that gets the json to our url request
+    '''
+    get_headlines_url = headlines_url.format(sources_id,api_key)
+
+    with urllib.request.urlopen(get_headlines_url) as url:
+        get_headlines_data = url.read()
+        get_headlines_response = json.loads(get_headlines_data)
+
+        headlines_results = None 
+
+        if get_headlines_response['articles']:
+            headlines_results_list = get_headlines_response['articles']
+            headlines_results = process_headlines(headlines_results_list)
+
+    return headlines_results
+
+def process_headlines(headlines_list):
+    '''
+    Function that processes the news result and transform them to a list 
+    of objects
+
+    Args:
+        news_list: A list of dictionaries that contain news sources 
+
+    Returns :
+          news_results: A list of news objects 
+    '''
+    
+    headlines_results = []
+    for headlines_item in headlines_list:
+        id = headlines_item.get('id')
+        name = headlines_item.get('name')
+        description = headlines_item.get ('description')
+        url = headlines_item.get('url')
+
+        if url:
+            headlines_object = Newsource(id,name,description,url)
+            headlines_results.append(headlines_object)
+
+    return headlines_results
+
 
 
 
