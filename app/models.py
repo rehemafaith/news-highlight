@@ -11,3 +11,15 @@ class Headlines:
       self.description = description 
       self.urlToImage = urlToImage
       self.url = url
+
+
+class Newsource:
+  '''
+  Newsource class to define News Objects 
+  '''
+
+  def __init__(self,id,name,description,url,):
+      self.id = id
+      self.name = name 
+      self.description = description 
+      self.url = url

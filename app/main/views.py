@@ -1,9 +1,10 @@
 from flask import render_template
-from app import app 
-from .request import get_news,get_headlines
+from . import main 
+from ..requests import get_news,get_headlines
+from ..models import Newsource,Headlines
 
 #Views 
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -16,7 +17,7 @@ def index():
     title = 'Home - Welcome to News Highlight'
     return render_template('index.html',title = title , sources = sources)
 
-@app.route('/news/<sources>')
+@main.route('/news/<sources>')
 def news(sources):
 
   '''
